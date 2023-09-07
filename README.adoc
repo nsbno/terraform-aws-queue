@@ -1,0 +1,26 @@
+= SQS Queue
+:!toc-title:
+:!toc-placement:
+:toc:
+
+Creates a SQS queue with a dead letter queue.
+
+toc::[]
+
+== About
+This module allows you to create an SQS queue with best practices.
+
+Use it for all your SQS queues!
+
+== Usage
+To use this module, just add it to your terraform!
+
+[source, hcl]
+----
+module "queue" {
+  source = "github.com/nsbno/terraform-aws-queue?ref=x.y.z"
+
+  name = "important-events"
+}
+----
+
