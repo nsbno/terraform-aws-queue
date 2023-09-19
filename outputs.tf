@@ -10,6 +10,10 @@ output "queue_name" {
   value = aws_sqs_queue.this.name
 }
 
+output "queue_id" {
+  value = aws_sqs_queue.this.id
+}
+
 output "dlq_arn" {
   value = aws_sqs_queue.dlq.name
 }
