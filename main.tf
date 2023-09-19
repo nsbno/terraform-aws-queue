@@ -48,7 +48,7 @@ resource "aws_sqs_queue_policy" "allow_sns_recieve" {
 }
 
 resource "aws_sns_topic_subscription" "this" {
-  for_each = var.subscribe_sns_arns
+  for_each = toset(var.subscribe_sns_arns)
 
   topic_arn = each.value
 
