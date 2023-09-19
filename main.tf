@@ -55,5 +55,5 @@ resource "aws_sns_topic_subscription" "this" {
   protocol = "sqs"
   endpoint = aws_sqs_queue.this.arn
 
-  filter_policy = length(var.filter_policy) > 0 ? var.filter_policy : null
+  filter_policy = var.filter_policy
 }

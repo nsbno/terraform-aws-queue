@@ -33,6 +33,6 @@ variable "subscribe_sns_arns" {
 
 variable "filter_policy" {
   description = "JSON String with the filter policy that will be used in the subscription to filter messages."
-  type    = string
-  default = ""
+  type        = string
+  default     = null
 }
