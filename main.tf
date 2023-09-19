@@ -11,8 +11,6 @@ resource "aws_sqs_queue" "this" {
     deadLetterTargetArn = aws_sqs_queue.dlq.arn
     maxReceiveCount     = var.max_tries_before_sending_to_dlq
   })
-
-  tags = var.tags
 }
 
 resource "aws_sqs_queue" "dlq" {
