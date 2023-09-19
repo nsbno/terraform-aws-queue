@@ -5,6 +5,8 @@ resource "aws_sqs_queue" "this" {
 
   visibility_timeout_seconds = var.visibility_timeout
 
+  sqs_managed_sse_enabled = true
+
   redrive_policy = jsonencode({
     deadLetterTargetArn = aws_sqs_queue.dlq.arn
     maxReceiveCount     = var.max_tries_before_sending_to_dlq
@@ -52,4 +54,6 @@ resource "aws_sns_topic_subscription" "this" {
 
   protocol = "sqs"
   endpoint = aws_sqs_queue.this.arn
+
+  filter_policy = var.filter_policy
 }
