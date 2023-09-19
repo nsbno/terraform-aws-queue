@@ -30,3 +30,15 @@ variable "subscribe_sns_arns" {
   type    = list(string)
   default = []
 }
+
+variable "tags" {
+  description = "A map of tags (key-value pairs) passed to resources."
+  type        = map(string)
+  default     = {}
+}
+
+variable "filter_policy" {
+  description = "JSON String with the filter policy that will be used in the subscription to filter messages."
+  type    = string
+  default = ""
+}
