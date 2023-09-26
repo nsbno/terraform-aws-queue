@@ -36,3 +36,9 @@ variable "filter_policy" {
   type        = string
   default     = null
 }
+
+variable "raw_message_delivery" {
+  description = "Should raw message delivery be enabled, defaults to false."
+  type        = bool
+  default     = false
+}
