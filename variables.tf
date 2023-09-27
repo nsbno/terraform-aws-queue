@@ -42,3 +42,9 @@ variable "raw_message_delivery" {
   type        = bool
   default     = false
 }
+
+variable "long_poll_time_seconds" {
+  description = "The amount of time a call to RecieveMessage will wait for a message before returning. Meaning that the ReceiveMessage call will perform long polling."
+  type        = number
+  default     = 0
+}
