@@ -7,6 +7,8 @@ resource "aws_sqs_queue" "this" {
 
   sqs_managed_sse_enabled = true
 
+  receive_wait_time_seconds = var.long_poll_time_seconds
+
   redrive_policy = jsonencode({
     deadLetterTargetArn = aws_sqs_queue.dlq.arn
     maxReceiveCount     = var.max_tries_before_sending_to_dlq
