@@ -14,7 +14,8 @@ variable "is_fifo" {
 variable "visibility_timeout" {
   description = "How long should the message be hidden from other consumers?"
 
-  type = number
+  type    = number
+  default = null
 }
 
 variable "max_tries_before_sending_to_dlq" {
