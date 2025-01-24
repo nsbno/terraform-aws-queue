@@ -55,3 +55,9 @@ variable "message_retention_seconds" {
   type        = number
   default     = null
 }
+
+variable "message_retention_seconds_dlq" {
+  description = "The number of seconds Amazon SQS retains a message in the DLQ."
+  type        = number
+  default     = null
+}

@@ -20,7 +20,8 @@ resource "aws_sqs_queue" "this" {
 resource "aws_sqs_queue" "dlq" {
   name = "${var.name}-dlq"
 
-  fifo_queue = var.is_fifo
+  fifo_queue                = var.is_fifo
+  message_retention_seconds = var.message_retention_seconds_dlq
 }
 
 data "aws_iam_policy_document" "allow_sns_recieve" {
