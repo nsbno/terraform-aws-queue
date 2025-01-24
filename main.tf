@@ -9,6 +9,8 @@ resource "aws_sqs_queue" "this" {
 
   receive_wait_time_seconds = var.long_poll_time_seconds
 
+  message_retention_seconds = var.message_retention_seconds
+
   redrive_policy = jsonencode({
     deadLetterTargetArn = aws_sqs_queue.dlq.arn
     maxReceiveCount     = var.max_tries_before_sending_to_dlq
@@ -18,7 +20,8 @@ resource "aws_sqs_queue" "this" {
 resource "aws_sqs_queue" "dlq" {
   name = "${var.name}-dlq"
 
-  fifo_queue = var.is_fifo
+  fifo_queue                = var.is_fifo
+  message_retention_seconds = var.message_retention_seconds_dlq
 }
 
 data "aws_iam_policy_document" "allow_sns_recieve" {

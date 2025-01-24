@@ -14,7 +14,8 @@ variable "is_fifo" {
 variable "visibility_timeout" {
   description = "How long should the message be hidden from other consumers?"
 
-  type = number
+  type    = number
+  default = null
 }
 
 variable "max_tries_before_sending_to_dlq" {
@@ -47,4 +48,16 @@ variable "long_poll_time_seconds" {
   description = "The amount of time a call to RecieveMessage will wait for a message before returning. Meaning that the ReceiveMessage call will perform long polling."
   type        = number
   default     = 0
+}
+
+variable "message_retention_seconds" {
+  description = "The number of seconds Amazon SQS retains a message."
+  type        = number
+  default     = null
+}
+
+variable "message_retention_seconds_dlq" {
+  description = "The number of seconds Amazon SQS retains a message in the DLQ."
+  type        = number
+  default     = null
 }
