@@ -48,3 +48,9 @@ variable "long_poll_time_seconds" {
   type        = number
   default     = 0
 }
+
+variable "message_retention_seconds" {
+  description = "The number of seconds Amazon SQS retains a message."
+  type        = number
+  default     = null
+}

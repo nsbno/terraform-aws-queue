@@ -9,6 +9,8 @@ resource "aws_sqs_queue" "this" {
 
   receive_wait_time_seconds = var.long_poll_time_seconds
 
+  message_retention_seconds = var.message_retention_seconds
+
   redrive_policy = jsonencode({
     deadLetterTargetArn = aws_sqs_queue.dlq.arn
     maxReceiveCount     = var.max_tries_before_sending_to_dlq
