@@ -38,6 +38,12 @@ variable "filter_policy" {
   default     = null
 }
 
+variable "filter_policy_scope" {
+  description = "Whether the filter policy applies to MessageAttributes or MessageBody. If not set, the default from AWS will be used."
+  type        = string
+  default     = null
+}
+
 variable "raw_message_delivery" {
   description = "Should raw message delivery be enabled, defaults to false."
   type        = bool
