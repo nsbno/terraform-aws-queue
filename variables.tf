@@ -2,6 +2,10 @@ variable "name" {
   description = "The name of the queue"
 
   type = string
+  validation {
+    condition     = !can(regex("\\.fifo$", var.name))
+    error_message = "Use the is_fifo variable to create a FIFO queue. The names of the queue and the DLQ will be correctly postfixed with .fifo."
+  }
 }
 
 variable "is_fifo" {

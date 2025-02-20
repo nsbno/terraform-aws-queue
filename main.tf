@@ -1,5 +1,5 @@
 resource "aws_sqs_queue" "this" {
-  name = var.name
+  name = var.is_fifo ? "${var.name}.fifo" : var.name
 
   fifo_queue = var.is_fifo
 
@@ -18,7 +18,7 @@ resource "aws_sqs_queue" "this" {
 }
 
 resource "aws_sqs_queue" "dlq" {
-  name = "${var.name}-dlq"
+  name = var.is_fifo ? "${var.name}-dlq.fifo" : "${var.name}-dlq"
 
   fifo_queue                = var.is_fifo
   message_retention_seconds = var.message_retention_seconds_dlq
