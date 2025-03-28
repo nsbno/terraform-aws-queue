@@ -28,11 +28,11 @@ data "aws_iam_policy_document" "allow_sns_recieve" {
   statement {
     effect = "Allow"
     principals {
-      type = "Service"
+      type        = "Service"
       identifiers = ["sns.amazonaws.com"]
     }
 
-    actions = ["sqs:SendMessage"]
+    actions   = ["sqs:SendMessage"]
     resources = [aws_sqs_queue.this.arn]
 
     condition {

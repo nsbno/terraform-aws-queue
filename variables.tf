@@ -32,7 +32,7 @@ variable "max_tries_before_sending_to_dlq" {
 variable "subscribe_sns_arns" {
   description = "A list of SNS ARNs to subscribe to the queue"
 
-  type = list(string)
+  type    = list(string)
   default = []
 }
 
@@ -78,7 +78,7 @@ variable "deduplication_scope" {
   default     = "queue"
 
   validation {
-    condition = contains(["queue", "messageGroup"], var.deduplication_scope)
+    condition     = contains(["queue", "messageGroup"], var.deduplication_scope)
     error_message = "Allowed values for deduplication_scope are 'queue' or 'messageGroup'."
   }
 }
@@ -89,7 +89,7 @@ variable "fifo_throughput_limit" {
   default     = "perQueue"
 
   validation {
-    condition = contains(["perQueue", "perMessageGroupId"], var.fifo_throughput_limit)
+    condition     = contains(["perQueue", "perMessageGroupId"], var.fifo_throughput_limit)
     error_message = "Allowed values for fifo_throughput_limit are 'perQueue' or 'perMessageGroupId'."
   }
 }
