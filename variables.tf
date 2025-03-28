@@ -75,7 +75,7 @@ variable "message_retention_seconds_dlq" {
 variable "deduplication_scope" {
   description = "(Optional) Specifies whether message deduplication occurs at the message group or queue level."
   type        = string
-  default     = null
+  default     = "queue"
 
   validation {
     condition = contains(["queue", "messageGroup"], var.deduplication_scope)
@@ -86,7 +86,7 @@ variable "deduplication_scope" {
 variable "fifo_throughput_limit" {
   description = "(Optional) Specifies whether the FIFO queue throughput quota applies to the entire queue or per message group"
   type        = string
-  default     = null
+  default     = "perQueue"
 
   validation {
     condition = contains(["perQueue", "perMessageGroupId"], var.fifo_throughput_limit)
