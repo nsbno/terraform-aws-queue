@@ -71,3 +71,31 @@ variable "message_retention_seconds_dlq" {
   type        = number
   default     = null
 }
+
+variable "deduplication_scope" {
+  description = "(Optional) Specifies whether message deduplication occurs at the message group or queue level."
+  type        = string
+  default     = "queue"
+
+  validation {
+    condition     = contains(["queue", "messageGroup"], var.deduplication_scope)
+    error_message = "Allowed values for deduplication_scope are 'queue' or 'messageGroup'."
+  }
+}
+
+variable "fifo_throughput_limit" {
+  description = "(Optional) Specifies whether the FIFO queue throughput quota applies to the entire queue or per message group"
+  type        = string
+  default     = "perQueue"
+
+  validation {
+    condition     = contains(["perQueue", "perMessageGroupId"], var.fifo_throughput_limit)
+    error_message = "Allowed values for fifo_throughput_limit are 'perQueue' or 'perMessageGroupId'."
+  }
+}
+
+variable "content_based_deduplication" {
+  description = "(Optional) Enables content-based deduplication for FIFO queues"
+  type        = bool
+  default     = null
+}
