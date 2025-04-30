@@ -1,8 +1,8 @@
 resource "aws_sqs_queue" "this" {
   name                        = var.is_fifo ? "${var.name}.fifo" : var.name
   fifo_queue                  = var.is_fifo
-  deduplication_scope         = var.deduplication_scope
-  fifo_throughput_limit       = var.fifo_throughput_limit
+  deduplication_scope         = var.is_fifo ? var.deduplication_scope : null
+  fifo_throughput_limit       = var.is_fifo ? var.fifo_throughput_limit : null
   content_based_deduplication = var.content_based_deduplication
   visibility_timeout_seconds  = var.visibility_timeout
   sqs_managed_sse_enabled     = true
